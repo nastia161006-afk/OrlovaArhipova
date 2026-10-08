@@ -15,11 +15,9 @@ class ExchangeRate:
         currency(self.target)
         decimal_value(self.rate, "INVALID_RATE")
 
-        # 1. Курс должен быть конечным (не NaN, не бесконечность) и строго положительным
         if not self.rate.is_finite() or self.rate <= 0:
             raise DomainError("INVALID_RATE")
 
-        # 2. Валюты в паре не должны совпадать
         if self.source == self.target:
             raise DomainError("INVALID_RATE_PAIR")
 
