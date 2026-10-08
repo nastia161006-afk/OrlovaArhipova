@@ -13,17 +13,14 @@ class FxService:
     def convert(self, amount, target_currency):
         currency(target_currency)
         
-        # 1. Если валюты одинаковые — возвращаем исходную сумму (Шаг 3)
         if amount.currency == target_currency:
             return amount
             
-        # 2. Если пары нет — выбрасываем ошибку (Шаг 3)
         if (amount.currency, target_currency) not in self._rates:
             raise DomainError("RATE_NOT_FOUND")
             
         rate = self._rates[(amount.currency, target_currency)]
         
-        # 3. Умножаем точно, округляем только итог по HALF_UP (Шаг 2)
         with localcontext() as ctx:
             ctx.prec = 28
             converted_amount = amount.amount * rate.rate
