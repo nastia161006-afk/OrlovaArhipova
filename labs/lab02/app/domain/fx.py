@@ -1,25 +1,27 @@
-from dataclasses import dataclass
-from decimal import Decimal
-from app.support.types import currency, decimal_value
-from app.support.errors import DomainError
+from dataclasses import dataclass  # Инструмент для классов данных
+from decimal import Decimal  # Тип для точных вычислений
+from app.support.types import currency, decimal_value  # Валидаторы
+from app.support.errors import DomainError  # Ошибки 
 
 
-@dataclass(frozen=True)
-class ExchangeRate:
-    source: str
-    target: str
-    rate: Decimal
+@dataclass(frozen=True)  # Класс данных + неизменяемость
+class ExchangeRate:  # Модель курса валют
+    source: str  # Исходная валюта 
+    target: str  # Целевая валюта 
+    rate: Decimal  # Значение курса 
+    
+    def __post_init__(self):  # Проверки после создания объекта
+        currency(self.source)  # Проверяем исходную валюту
+        currency(self.target)  # Проверяем целевую валюту
+        decimal_value(self.rate, "INVALID_RATE")  # Проверяем тип курса
 
-    def __post_init__(self):
-        currency(self.source)
-        currency(self.target)
-        decimal_value(self.rate, "INVALID_RATE")
+        
+        if not self.rate.is_finite() or self.rate <= 0: # Курс должен быть конечным и строго положительным
+            raise DomainError("INVALID_RATE")  
 
-        if not self.rate.is_finite() or self.rate <= 0:
-            raise DomainError("INVALID_RATE")
-
-        if self.source == self.target:
-            raise DomainError("INVALID_RATE_PAIR")
-
-    def matches(self, source, target):
-        return self.source == source and self.target == target
+        
+        if self.source == self.target: # Валюты в паре не должны совпадать
+            raise DomainError("INVALID_RATE_PAIR")  
+        
+    def matches(self, source, target):  # Проверка соответствия паре
+        return self.source == source and self.target == target  # Сравнение
