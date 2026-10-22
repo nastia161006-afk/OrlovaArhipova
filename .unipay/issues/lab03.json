@@ -1,0 +1,39 @@
+{
+  "course": "unipay-oop",
+  "files": {
+    ".github/workflows/lab03.yml": "9c6c08497751efe8bb9c141b12e2762bcd3dd8d7e32d6c81ec12f89590af5720",
+    "labs/lab03/REFERENCE.md": "b2fa7c3b450f9049675eecd9b31a102092af376f05515f2f82dc3730ada229e7",
+    "labs/lab03/STARTER-STATE.md": "cf85f8971aa3f5df79395e0ec82b9df9037f78bd3c014d9340ae45e70289d1b4",
+    "labs/lab03/TASK.md": "fe84258e1b424ed6885d734462d12bc378a0025ca378e8f09bc8898adb22cda6",
+    "labs/lab03/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "labs/lab03/app/api.py": "32997bb489c2a16b417c001ad7af3db0b98044ddb9a253b008b7ba6d6f260f12",
+    "labs/lab03/app/domain/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "labs/lab03/app/domain/fx.py": "7035670340f8cb5d07d0818dcbf364a87e56c86a6eebe6a8d7ab8177882e8c63",
+    "labs/lab03/app/domain/providers.py": "9b7199babbfecd1c3d04d58ea8354966f4c18d314b039dc3ee51178770e047c2",
+    "labs/lab03/app/services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "labs/lab03/app/services/assembly.py": "9b68a1ae334b7a890bbf3b5546c57791f2ef07e9cc828888fcee3a9bbcb55824",
+    "labs/lab03/app/services/fx_service.py": "d8294ac27fcee350dc8ab4ad3a879f8e2ae8e9d6f7a4a28c60ed02c9b0aad1a9",
+    "labs/lab03/app/support/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "labs/lab03/app/support/errors.py": "ce3b7a67a344a59c282e6dce34f178dd047466712697eaa8dbd9cace93fabaf3",
+    "labs/lab03/app/support/money.py": "f498773c7642b2a19682b8d71b08cf8f049131ca5e363a2ac111825905b15f5c",
+    "labs/lab03/app/support/types.py": "b0d4e3ecff4f63fecd39fa6f0a4a39142786d47cd6b14d55a47c908fde3b60e3",
+    "labs/lab03/bonus_tests/test_bonus.py": "835017801646b81d5fe476c975cdc43841b0b18bc0e5306a215554f6f2e52d04",
+    "labs/lab03/bonus_tests/test_extension.py": "4fb0c72a408d945e40996a0d38c9610b89dd62972b1c80f8c8233fea726cdbe2",
+    "labs/lab03/conftest.py": "155c516061e0bfbe0f30e4215d6098c203a0fa0f7201afd88fe9de9b1459bddc",
+    "labs/lab03/protected-files.json": "aa5a148517ff7fb882af22a3dac41c1d9c3e7d4c9142989bf24fcbaa7b6379f9",
+    "labs/lab03/pytest.ini": "0a7768bbb53a890047c800347d2a817bbcc0294dfa4f48b8457954b5d75a6f5a",
+    "labs/lab03/tests/test_contract.py": "5b8d93d6770954d5cd77cc0aaaae10482683a78a398a871634e40b966e47459a",
+    "labs/lab03/tests/test_progression.py": "7cfaeb490c600b9af0316e548bc33bbb638368496c8285ac0d11ba9aec37f229",
+    "labs/lab03/tests/test_review_contract.py": "e8c179f5c0ad9cbddefd5e5a84d026f8b53b21dac43ba9d3f8b359595f44b2e2"
+  },
+  "format": 1,
+  "lab": 3,
+  "runtime_sha256": {
+    ".gitattributes": "d60f352d0db1404c70afb4bb8b2ca3fd1c610572aa40720e8a0b7baa7885418c",
+    "check.py": "13d78e782ae8486fd09b71adb8fe2d57b9555c17333cbaa233b2ebc504dfaa3a",
+    "requirements.txt": "693d97bdd0fb5283060c3efadf25a90d0c3b59be09b25fac59f5f1c68a1f993b"
+  },
+  "source_commit": "dd84e4c1b25fb000b93255220e421d19fcce3e17",
+  "source_tree": "aa011bdfdbc0cd1baae91f4d25b912209c6d3fd1",
+  "variant": "fx"
+}
