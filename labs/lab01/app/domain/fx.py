@@ -9,7 +9,6 @@ class ExchangeRate:
     target: str # куда
     rate: Decimal # курс
 
-    # ВНИМАНИЕ: с этого момента пошел отступ в 4 пробела!
     def __post_init__(self): # проверка объекта
         currency(self.source) # валюта написана верно
         currency(self.target)
