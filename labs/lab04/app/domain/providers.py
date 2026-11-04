@@ -1,14 +1,11 @@
 from abc import ABC, abstractmethod
-from decimal import Decimal, localcontext
 from app.domain.fx import ExchangeRate
 from app.support.errors import DomainError
-
 
 class ExchangeRateProvider(ABC):
     @abstractmethod
     def get_rate(self, source, target):
         raise NotImplementedError
-
 
 class TableRateProvider(ExchangeRateProvider):
     def __init__(self, rates):
@@ -21,7 +18,6 @@ class TableRateProvider(ExchangeRateProvider):
         if (source, target) not in self._rates:
             raise DomainError("RATE_NOT_FOUND")
         return self._rates[(source, target)]
-
 
 class FixedRateProvider(ExchangeRateProvider):
     def __init__(self, exchange_rate):

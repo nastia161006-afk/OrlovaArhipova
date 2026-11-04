@@ -4,9 +4,16 @@ from app.domain.fx import ExchangeRate
 from app.support.errors import DomainError
 
 
+<<<<<<< HEAD
 class ExchangeRateProvider:
     def get_rate(self, source, target):
         raise NotImplementedError
+=======
+class ExchangeRateProvider(ABC):
+    @abstractmethod
+    def get_rate(self, source, target):
+        pass
+>>>>>>> fccb2c6 (промежуточное сохранение)
 
 
 class TableRateProvider(ExchangeRateProvider):
@@ -19,7 +26,11 @@ class TableRateProvider(ExchangeRateProvider):
     def get_rate(self, source, target):
         if (source, target) not in self._rates:
             raise DomainError("RATE_NOT_FOUND")
+<<<<<<< HEAD
         raise NotImplementedError("ЛР3: табличный источник")
+=======
+        return self._rates[(source, target)]
+>>>>>>> fccb2c6 (промежуточное сохранение)
 
 
 class FixedRateProvider(ExchangeRateProvider):
@@ -31,4 +42,8 @@ class FixedRateProvider(ExchangeRateProvider):
     def get_rate(self, source, target):
         if not self._rate.matches(source, target):
             raise DomainError("RATE_NOT_FOUND")
+<<<<<<< HEAD
         raise NotImplementedError("ЛР3: фиксированный источник")
+=======
+        return self._rate
+>>>>>>> fccb2c6 (промежуточное сохранение)

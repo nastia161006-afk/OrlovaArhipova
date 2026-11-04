@@ -6,41 +6,41 @@ from app.support.types import currency, rounded_money
 
 
 class FxService:
-    def __init__(self, rates): # словарь с курсами
-        self._rates = dict(rates) # копируем, чтобы не менять оригинал
+    def __init__(self, rates):
+        self._rates = dict(rates)
 
     def convert(self, amount, target_currency):
-        currency(target_currency) # проверяем, что валюта верная
+        currency(target_currency)
 
         if amount.currency == target_currency:
-            return amount # если валюты одинаковые — просто возвращаем сумму
+            return amount
 
-        pair = (amount.currency, target_currency) # пара для поиска
+        pair = (amount.currency, target_currency)
 
         if pair not in self._rates:
-            raise DomainError("RATE_NOT_FOUND") # нет курса для такой пары
+            raise DomainError("RATE_NOT_FOUND")
 
         exchange_rate = self._rates[pair]
 
         if (
-            not isinstance(exchange_rate, ExchangeRate) # проверка объекта
-            or exchange_rate.source != amount.currency # откуда
-            or exchange_rate.target != target_currency # куда
+            not isinstance(exchange_rate, ExchangeRate)
+            or exchange_rate.source != amount.currency
+            or exchange_rate.target != target_currency
         ):
             raise DomainError("INVALID_RATE_PAIR")
 
-        with localcontext() as ctx: # умножаем сумму на курс
+        with localcontext() as ctx:
             ctx.prec = 28
             converted_amount = amount.amount * exchange_rate.rate
 
         return rounded_money(converted_amount, target_currency)
 
 
-def make_entity(source, target, rate): # объект курса валют
+def make_entity(source, target, rate):
     return ExchangeRate(source, target, rate)
 
 
-def view(rate): # превращение обратно в словарь
+def view(rate):
     return {
         "source": rate.source,
         "target": rate.target,
@@ -48,14 +48,14 @@ def view(rate): # превращение обратно в словарь
     }
 
 
-def invoke(service, method, amount, target_currency): # API заходит в сервис
+def invoke(service, method, amount, target_currency):
     if method != "convert":
         raise ValueError(method)
 
     return service.convert(amount, target_currency)
 
 
-def new_service(rates=None): # создает сервис с курсом
+def new_service(rates=None):
     if rates is None:
         rates = {
             ("USD", "EUR"): ExchangeRate(

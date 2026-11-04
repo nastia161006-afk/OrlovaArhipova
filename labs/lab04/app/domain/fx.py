@@ -3,7 +3,7 @@ from decimal import Decimal
 from app.support.types import currency, decimal_value
 from app.support.errors import DomainError
 
-frozen=True
+@dataclass(frozen=True)
 class ExchangeRate:
     source: str
     target: str
@@ -18,8 +18,5 @@ class ExchangeRate:
         if self.rate <= 0:
             raise DomainError("INVALID_RATE")
 
-        def matches(self, source, target):
-        return legacy_l4_exchangerate_matches(self, source, target)
-
-def legacy_l4_exchangerate_matches(owner, source, target):
-    return owner.source == source and owner.target == target
+    def matches(self, source, target):
+        return self.source == source and self.target == target
